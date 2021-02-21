@@ -32,6 +32,14 @@ module OffsitePayments
         def order_id
           @params['MerchantTradeNo']
         end
+
+        def gross
+          @params['TradeAmt']
+        end
+
+        def trade_message
+          @params['RtnMsg']
+        end
       end
     end
   end
