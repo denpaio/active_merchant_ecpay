@@ -21,10 +21,9 @@ Gem::Specification.new do |spec|
   spec.metadata['source_code_uri'] = 'https://github.com/denpaio/active_merchant_ecpay'
   spec.metadata['changelog_uri'] = 'https://github.com/denpaio/active_merchant_ecpay/commits/master'
 
-  # Specify which files should be added to the gem when it is released.
-  # The `git ls-files -z` loads the files in the RubyGem that have been added into git.
   spec.files         = Dir.chdir(File.expand_path(__dir__)) do
-    `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
+    Dir.glob("{lib,exe}/**/*").select { |f| File.file?(f) } +
+      %w[active_merchant_ecpay.gemspec Gemfile LICENSE README.md Rakefile]
   end
   spec.bindir        = 'exe'
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
